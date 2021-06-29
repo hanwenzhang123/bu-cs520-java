@@ -4,7 +4,7 @@ Want to know more about my background and/or collaborate?\
 Let's connect through LinkedIn!
 [Hanwen's LinkedIn](https://www.linkedin.com/in/hanwenzhang123)
 
-## CS 520, Information Structures with Java
+## CS 520: Information Structures with Java
 `This course covers the concepts of object-oriented approach to software design and development using the Java programming language. 
 It includes a detailed discussion of programming concepts starting with the fundamentals of data types, control structures methods, classes, applets, arrays and strings, 
 and proceeding to advanced topics such as inheritance and polymorphism, interfaces, creating user interfaces, exceptions, and streams. 
