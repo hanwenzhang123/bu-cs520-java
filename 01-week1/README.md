@@ -23,10 +23,18 @@ public class P01_IfAgeTest {
 
         // Perform conditional test using the value of age
         if (age >= 18) {
-            // Condition was true
-            System.out.println("You are old enough to vote");
-        }
 
+          // Condition was true
+          System.out.println("You are old enough to vote");
+
+        } else {
+
+          // Condition was false
+          int waitFor = 18 - age;
+          System.out.println("Sorry, you are not old enough to vote.");
+          System.out.println("You have to wait " + waitFor + " years.");
+
+        }
     }
 }
 ```
