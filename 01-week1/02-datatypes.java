@@ -54,16 +54,13 @@ Syntax: type variableName1, variableName2;
 
 int index, counter1, counter2;
 double acceleration, speed, time;
- 
+double distanceTraveled, finalPosition;
+
 
 //Expressions and Assignment Statements
 package cs520.module1.L2_datatypes;
 
 import java.util.Scanner;
-
-double initialPosition, speed, time;
-
-double distanceTraveled, finalPosition;
 
 public class P01_ComputingDistance {
   public static void main(String[] args) {
