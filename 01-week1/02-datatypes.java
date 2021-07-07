@@ -31,6 +31,9 @@ which is equivalent to:
 273*10-2, 31415*10-4, .5*10-4 respectively.
 Constants of type float are differentiated from double constants by appending a suffix of 'f' or 'F'.
   
+The sequence of primitive types by increasing range is shown below:
+byte->short->int->long->float->double
+  
 //Type Casts
 syntax cast expression:
 (target_type) value_of_source_type
@@ -57,6 +60,10 @@ double acceleration, speed, time;
 package cs520.module1.L2_datatypes;
 
 import java.util.Scanner;
+
+double initialPosition, speed, time;
+
+double distanceTraveled, finalPosition;
 
 public class P01_ComputingDistance {
   public static void main(String[] args) {
@@ -96,6 +103,130 @@ public class P01_ComputingDistance {
   }
 }
 
+//Precedence and Associativity
+int finalPosition = initialPosition + speed * time;
+double gpa = (grade1 + grade2 + grade3) / 3.0;
+  
+//Simple Input/Output
+package cs520.module1.L2_datatypes;
+
+import java.util.Scanner;
+
+public class P01_ScannerInput {
+    public static void main(String[] args) {
+      System.out.print("What is your name? ");
+      Scanner scanner = new Scanner(System.in);
+      String input = scanner.nextLine();
+      System.out.println("Hello, " + input + "!");
+    }
+}
+Scanner is found in the java.util package and must therefore be imported (line 1) before it may be used. 
+  When this code is run, the console window allows the user to type their input, and it will not be sent to the program until the Enter key is pressed. 
   
   
+The input data is always fed into the program as a string, even if the user enters only numeric data. 
+Convert string to	    Parser method
+byte                  Byte.parseByte()
+short                 Short.parseShort()
+int                   Integer.parseInt()
+long                  Long.parseLong()
+float                 Float.parseFloat()
+double                Double.parseDouble()
+
   
+Each parser method accepts a string value and converts it to the proper primitive type. This modified example converts the input text into an int so that it may then perform an addition operation:
+
+package cs520.module1.L2_datatypes;
+
+import java.util.Scanner;
+
+public class P02_ParseStringInput {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Please enter your age: ");
+    String input = scanner.nextLine();
+    int age = Integer.parseInt(input);
+    int newAge = age + 10;
+    String output = "You will be " + newAge + " in 10 years from now!";
+    System.out.println(output);
+  }
+}
+
+//Integer vs. Floating-Point Operations
+package cs520.module1.L2_datatypes;
+
+public class P03_MathTest {
+    public static void main(String[] args) {
+        int x = 3;
+        int y = 2;
+        int myInt = x / y;
+        double myDouble1 = x / y;
+        double myDouble2 = (double)x / (double)y;
+        System.out.println(myInt);
+        System.out.println(myDouble1);
+        System.out.println(myDouble2);
+    }
+}
+//1
+//1.0
+//1.5
+
+//Initialization
+int counter;
+double totalSales;
+int product;
+
+//variable declaration
+int counter = 1;
+double totalSales = 2.3;
+int product = 4;
+
+//x only exist, within a method
+public void doSomeMath() {
+    int x;
+    int y = x + 1;
+}
+//x is not a local variable and will default to 0 before it is added to 1 and assigned to y
+int x;
+public void doSomeMath() {
+    int y = x + 1;
+}
+
+//Compound Assignment Operators
+Frequently, a variable may be reassigned a value based on a computation involving itself. For example, counter = counter + 1;
+will increase the value of counter by 1. This may be used for all arithmetic operations:
+sum = sum + term;
+product = product * factor;
+quotient = quotient / divider;
+remainder = remainder % 5;
+
+Java provides a shorthand notation for this type of statement:
+counter += 1;
+sum += term;
+product *= factor;
+quotient /= divider;
+remainder %= 5;
+An arithmetic symbol ( +, -, *, /, % ) immediately followed by = in this manner is called a compound assignment operator. 
+
+//Increment/Decrement Operators
+It may be used to adds to the value of a variable by 1 by using the ++ notation, or to subtract from the value of a variable by 1 by using --. The increment/decrement operator has two forms:
+
+Postfix form: ++ or -- after the variable name
+Prefix form: ++ or -- before the variable name
+
+int a = 5;
+a++; // a is now 6
+++a; // a is now 7
+a--; // a is now 6
+--a; // a is now 5
+
+int a = 3;
+int b = 4 * a++; // a is incremented after being multiplied by 4
+System.out.println(a); // 4 is printed
+System.out.println(b); // 12 is printed
+
+int a = 3;
+int b = 4 * ++a; // a is incremented before being multiplied by 4
+System.out.println(a); // 4 is printed
+System.out.println(b); // 16 is printed
+   
