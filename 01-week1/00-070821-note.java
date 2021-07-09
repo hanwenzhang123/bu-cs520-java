@@ -93,7 +93,4 @@ this all has to do with accessibility or scoping, but again concepts that we wil
 Scanner class
 Scanner scanner = new Scanner(system.in);
 String input = scanner.nextline();  
-
-
-  
   
