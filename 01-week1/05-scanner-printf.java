@@ -16,9 +16,21 @@ public class ScannerTest {
 printf - printmethod
 printf("%d", 10); (formatting string, data or argument(s) to be printed as long as it is the same data type
 
+Example:
+  String name = "John";
+  int classes = 5;
+  double gpa = 3.5;
+  System.out.printf("Hello, %s.%nYou are taking %d classes.%nYour GPA is %f.", name, classes, gpa);
+                   
+Output:
+ Hello, John.
+ You are taking 5 classes.
+ Your GPA is 3.5000000.
+
 %s - string
 %d - digit
-%f - float
+%f - floating-pont number (decimal)
+%n - new line
 %c - lower case character
 %C - upper case character
 %s - lower case string
