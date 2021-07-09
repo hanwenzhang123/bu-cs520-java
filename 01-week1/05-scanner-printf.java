@@ -8,7 +8,7 @@ public class ScannerTest {
     String name = scanner.nextLine();   //input as string
 //  int name = scanner.nextInt();   //input as int
     System.out.println("Hello, " + name);
-    System.out.printf("Hello, %s \n age is %d", name, 25);  //printf is for formatted print, using ',' instead of '+'
+    System.out.printf("Hello, %s%n Your age is %d years old", name, 25);  //printf is for formatted print, using ',' instead of '+'
   }
 }
 
