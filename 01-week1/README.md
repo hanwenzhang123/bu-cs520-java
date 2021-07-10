@@ -15,6 +15,7 @@ public class P01_IfAgeTest {
 
         // Convert the String input into an integer
         int age = Integer.parseInt(input);
+        
         // Call the checkVotingAge() method
         checkVotingAge(age);
     }
