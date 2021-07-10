@@ -29,7 +29,7 @@ Output:
 
 %s - string
 %d - digit
-%f - floating-pont number (decimal)
+%f - floating-point number (decimal)
 %n - new line
 %c - lower case character
 %C - upper case character
