@@ -60,7 +60,7 @@ do {
   System.out.println("x = %d%n", x++);  //44
 } while x(x<20);
 
-Break and continue
-  break - cause the current loop to stop abruptly
-  continue - cause the loop to skip the code underneath it
+Break and continue (seldomly used, we usually just use the truth test)
+  break - abort, cause the current loop to stop abruptly
+  continue - not stopping, keep going cause the loop to skip the code underneath it
   
