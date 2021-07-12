@@ -132,7 +132,9 @@ public double computeStatistics(Person p) {
         } else if (p instanceof Faculty) {
                 Faculty f = (Faculty)p;
                 return f.computeSalary();
-        } else
-} }
+        } else {
+           return -1;
+        } 
+}
 
 
