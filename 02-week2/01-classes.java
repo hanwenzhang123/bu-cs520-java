@@ -161,12 +161,57 @@ P04_Employee e1 = new P04_Employee("Alice", 70000, 2);
  
   
 //Static Variables and Methods
+Java uses the keyword static to qualify this type of data.
+  
+// Employee data stored in fields or instance variables
+   private String name;
+   private int startingSalary;
+   private double timeEmployed;
+   // Static variable for employee count
+   private static int employeeCount = 0;  //static variables
+   // Default constructor
+   public P05_Employee() {
+           this("Unknown", 50000, 0);
+}
+  
+   // Constructor with three arguments
+   public P05_Employee(String name, int startingSalary, double timeEmployed) {
+    this.name = name;
+    this.startingSalary = startingSalary;
+    this.timeEmployed = timeEmployed;
+    // Increment the static employee count
+    employeeCount++;
+}
+
+  public static int getEmployeeCount() {
+           return employeeCount;
+}
+  
+  public static void displayNumberOfEmployees() {
+           // Invoke the static method
+           int employeeCount = P05_Employee.getEmployeeCount();
+           System.out.printf("Employee Count = %d\n",employeeCount);
+}
   
   
+The following example shows the employee count as the employees are being created.
+   // Create an employee
+   P05_Employee e1 = new P05_Employee();
+   displayNumberOfEmployees();
+   // Create another employee
+   P05_Employee e2 = new P05_Employee("Alice");
+   displayNumberOfEmployees();
+   // Create another employee
+   P05_Employee e3 = new P05_Employee("Bob", 60000);
+   displayNumberOfEmployees();
+   // Create another employee
+   P05_Employee e4 = new P05_Employee("Charlie", 70000, 2);
+   displayNumberOfEmployees();
   
-  
-  
-  
+Employee Count = 1
+Employee Count = 2
+Employee Count = 3
+Employee Count = 4
   
   
   
