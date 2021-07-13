@@ -1,6 +1,6 @@
 import java.util.Scanner; 
 
-public class Main{    
+public class CurrentAge{    
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); 
@@ -13,13 +13,13 @@ public class Main{
         System.out.println("Enter your name:");
         String name = scanner.nextLine(); 
 
-        age(name, yearOfBirth);
+        calculateAge(name, yearOfBirth);
         
         scanner.close();
 
     }
 
-    public static void age(String name, int yearOfBirth){
+    public static void calculateAge(String name, int yearOfBirth){
         int age = 2021 - yearOfBirth;
         int daysOfLife = age * 365;
         System.out.println("Your name is " + name + ", and you are " + age + " years old.\n" + 
