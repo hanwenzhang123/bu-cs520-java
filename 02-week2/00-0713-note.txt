@@ -1,0 +1,26 @@
+method in java
+
+objects: state and behavior
+state - attributes
+behavior - a set of methods
+
+example: pen
+state: green
+behavior: writing
+
+What is OOP?
+classes are like blueprints for objects that serve a specific purpose
+classes are brought to life as object instances
+classes have attributes and methods
+methods are invoked by other classes and methods
+
+constructors
+constructors create instances of classes
+every class has a constructor 
+constructor name must match that of the class
+
+a class can be instantiated using the new keyword: 
+  Employee employee = new Employee();  //calling that specific constructor
+using new causes the target c;ass constructor to run
+java will automatically find the right constructor
+
