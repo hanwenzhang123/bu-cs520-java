@@ -1,5 +1,16 @@
 method in java
+methods are blocks of code that perform a specific function
+methods can:
+- accept arguments
+- perform work
+- return results
+the access modifier, return type, method name and arguments list comprise the method's signature
+if the method does not return a value, its return type must be void
+java considers the signature to be true identifier of the method
 
+function - pretty much the same thing but used in different programming languages
+
+What is an object? A discrete entity that can have state and behavior
 objects: state and behavior
 state - attributes
 behavior - a set of methods
