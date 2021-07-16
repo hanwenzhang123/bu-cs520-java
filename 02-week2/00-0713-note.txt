@@ -50,6 +50,31 @@ static vairbale and methods
 - static varibales/methods are conceptually the opposite of instance variables/methods
 - using the keyword static allows access without creating instance
 - much of the core java library is static, for example java.lang.Math
+- share the scope
   
   
+Just what is this?
+- the keyword this can be prefixed to instance variables and methods to make it clear that they are scoped to the specifc instance
+- this refers to the instance copy
+
+
+References
+- in java, variables that represent object instances are references ('pointers') to an item stored in the JVM's memory
+- when object instances are passed to methods, it is their reference that is actually being sent; this is called passing by reference
+
+Passing by Value
+- priminitives(int, boolean, double) are not really objects
+- they do not point to anything, they are their values
+- when primitives are passed to methods, a copy of the value itself is passed, this is called passing by value
+
+//constructor with two arguments that pass another constructor with three arguments
+public P02_Employee(String name, int startingSalary) {
+  this(name, startingSalary, 0.0);  //using only this, and with a default double value, passing to the one with 3 arguments
+  }
   
+ //constructor with three arguments 
+ public P02_Employee(String name, int startingSalary, double timeEmployed) {
+  this.name = name;
+  this.startingSalary = startingSalary;
+  this.timeEmployed = timeEmployed;
+  }
