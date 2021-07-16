@@ -54,3 +54,17 @@ Interfaces*
 Subclass constructor
 super();  //call super first, calling all the codes in the super 
 - always be the first thing in the constructor
+
+Subclass Variables & encapsulation
+- subclasses automaticallly inherit all instance variables( and their values) from parents as long as the variables are not marked private
+- subclasses can modify these values unless the variables are private or final
+- any other class can change the value of a class' public variable
+- encapsulation: ghiding direct access to variables by forcing callers to use accessor and mutator methods, also known as getters and setters
+
+Method overloading
+- a method can have multiple variants with different arguments, there are called overloads
+
+Polymorphism
+- poly(many) + morph(form) = the practice by which a java object instance can be utilized in multiple contexts
+
+
