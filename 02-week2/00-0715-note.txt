@@ -1,19 +1,29 @@
 Packages
 - java classes that share a common purpose are usually grouped together into packages
 - name convention involves "reverse domain name notation"
+  com.mycompany.sales.tools.retail (general to specific)
+- packages names correspond with the directory structure of the app
+- classes in a package do not have to interconnect
+- but classes in same package have special access privileges among them
+- packages must be declared in member classes with the package keyword, and this must be the first line of code in the class
 
 Inheritance
 - a subclass(child) inherits from its superclass(parent)
+- super: higher up
 - subclasses are often called derived classes
-- subclass can do everything its superclass can do
-- a subclass can add new functionality that does not exist in the superclass, this is called extending the superclass
-- java only supports single inheritance!!!
+- in most cases, a subclass can do everything its superclass can do
+- a subclass can add new functionality that does not exist in the superclass, this is called "extending" the superclass
+- everything in jaca is an object, everything is a subclass
+- subclasses may be the product of many generations of superclasses
+- java only supports single inheritance!!! this is not a drawback
 
 Inheritance Hierarchy
-object is always on the top
+object is always on the top then more specific
 
 Creating a subclass
-- the extends keyword is used to create a derived class
+- the "extends" keyword is used to create a derived class
+class Dog extends Canine {
+}
 
 Access modifier
 - access modifiers set the scope of a variable or method
@@ -22,44 +32,88 @@ Access modifier
   public - full access from all class in the application
   protected - only from classes in the same package or from subclasses (regardless of package)
   (none) - only from in the same package
-  private : no scope, not even subclass
-  
+  private - no scope, not even subclass  
+
+Overriding inherited variables/methods
+- subclasses can override (replace) inherited variable values and methods by declaring the same exact variable name or method signature
+- the subclass can mix and match the variables/methods it wants to override
+
 Methods designated as final
 - methods can marked as final, meaning they can not be overridden
 - final methods can still be used by subclasses
 public final int age = 4
 public final void run()
-
+- superclasses can prevent overriding by using the "final" keyword, or block it from subclasses entirely by using the "private" access modifier
+public final int humanAge(){  //final is final, you can not change, can not override
+  return this.age*7;
+}
 this and super to specify the variable
 
-Overriding inherited variables/methods
-- subclasses can override (replace) inherited variable values and methods by declaring the same exact variable name or method signature
-- superclasses can prevent overriding by using the final keyword, or block it from subclasses entirely by using the private access modifier
-
 Composition
+- in addition to inheriting from other classes, classes may be composed of other classes
+- Compositional relationships are denoted with HAS-A
+- constructing a class that is made up of other classes
 
 Abstract classes
-- classes can be marked as abstract, meaning they can not be instantiated 
+- classes can be marked as abstract, meaning they can not be instantiated like Person p = new Student();
+- Abstract classes are normally used in inheritance chains to enforce behavior in subclasses
+- methods marked as abstract in an abstract superclass must be implemented in child subclasses
 (the do not have a body, must be a void)
-public abstract void walk();
-public abstract void talk();
+public abstract class Person {
+  public abstract void walk();
+  public abstract void talk();
+  public abstract void sleep();
+  public abstract void computerExamScore();
+}
+as long as you have even one method that is marked abstract, whole calss has to get marked abstract or else it would not compile
+if you want to be a subclass of person, you must implement a method called walk, talk and sleep 
+it is like a rule instead of a strict method
+
+public abstract class Constants {
+
+    // Because abstract classes cannot be instantiated,
+    //  they are commonly used for storing constant values
+    public static final double CREDITS_PER_COURSE = 4.0;
+    public static final String UNIVERSITY_NAME = "Boston University";
+
+}
+
 
 Interfaces*
-- An interface is a set of rules that defines behavior
-- standalone files
+- An interface is a set of rules that defines behavior that a class must support
+- difference: it is standalone files, but not really classes
+- do not actually contain business logic, only the required method signatures
 - are implemented rather than extended
+- classes can implement multiple interfaces but extend just one superclass
+- no curly braces, no logics, interfaces are only about rules
+
+interface Shape {   //implementation, setting rules, gives characteristics to a class
+  public double area(); //must have this method
+  public int compareTo(shape s);   //must have this method
+}
+
+class Rectangle implements Shape {  //like you plugging in certain behaviors, implementing interfaces
+}
+
 - used in inheritance chain to enforce behavior in subclasses
 - methods marked as abstact in an abstract superclass must be implemented in child subclasses
 
-Subclass constructor
+
+Subclass Constructor
+- subclases automatically invoke the "no-arg"constructors of their superclasses
+- but this behavior can be overriden by using the super keyword, which calls a specific version of the constructor rather than the default
+- if used, super() must be the first line of code in the constructor
 super();  //call super first, calling all the codes in the super 
 - always be the first thing in the constructor
 
-Subclass Variables & encapsulation
+Subclass Variables & Encapsulation
 - subclasses automaticallly inherit all instance variables( and their values) from parents as long as the variables are not marked private
 - subclasses can modify these values unless the variables are private or final
 - any other class can change the value of a class' public variable
-- encapsulation: ghiding direct access to variables by forcing callers to use accessor and mutator methods, also known as getters and setters
+- however, this is often not advisable; classes should usually have exclusive control over their variables
+- encapsulation: hiding direct access to variables by forcing callers to use accessor and mutator methods, also known as getters and setters
+- this gives the class complete control over how the variables can be retrieved and modified by other classes
+
 
 Method overloading
 - a method can have multiple variants with different arguments, there are called overloads
@@ -67,4 +121,12 @@ Method overloading
 Polymorphism
 - poly(many) + morph(form) = the practice by which a java object instance can be utilized in multiple contexts
 
+public Animal
 
+public class Feline extends Animal {
+
+public class Cat extends Feline {
+  public void takeNapOnCouch(){
+  }
+}
+ 
