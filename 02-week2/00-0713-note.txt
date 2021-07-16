@@ -42,9 +42,14 @@ Instance variable & methods
 - a class is not required to have them
 - instance have their own copy of the variables and do not share them
 - like any variable, they must be declared, given a specific type and will assume a default value if none is given
+- values can change infinitely
+- instance methods have same scope as instance variables, can only be called by instance of the class
+They are specific to that instance and not marked with the keyword static
 
 static vairbale and methods
 - static varibales/methods are conceptually the opposite of instance variables/methods
-- using the keyword static allows access without creating instances
+- using the keyword static allows access without creating instance
 - much of the core java library is static, for example java.lang.Math
+  
+  
   
