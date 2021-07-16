@@ -1,0 +1,11 @@
+Packages
+- java classes that share a common purpose are usually grouped together into packages
+- name convention involves "reverse domain name notation"
+
+Inheritance
+- a subclass(child) inherits from its superclass(parent)
+- subclasses are often called derived classes
+- subclass can do everything its superclass can do
+- a subclass can add new functionality that does not exist in the superclass, this is called extending the superclass
+- java only supports single inheritance!!!
+
