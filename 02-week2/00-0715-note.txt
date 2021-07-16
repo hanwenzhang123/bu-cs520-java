@@ -9,3 +9,48 @@ Inheritance
 - a subclass can add new functionality that does not exist in the superclass, this is called extending the superclass
 - java only supports single inheritance!!!
 
+Inheritance Hierarchy
+object is always on the top
+
+Creating a subclass
+- the extends keyword is used to create a derived class
+
+Access modifier
+- access modifiers set the scope of a variable or method
+- they are not related to security
+- in descending order of scope level:
+  public - full access from all class in the application
+  protected - only from classes in the same package or from subclasses (regardless of package)
+  (none) - only from in the same package
+  private : no scope, not even subclass
+  
+Methods designated as final
+- methods can marked as final, meaning they can not be overridden
+- final methods can still be used by subclasses
+public final int age = 4
+public final void run()
+
+this and super to specify the variable
+
+Overriding inherited variables/methods
+- subclasses can override (replace) inherited variable values and methods by declaring the same exact variable name or method signature
+- superclasses can prevent overriding by using the final keyword, or block it from subclasses entirely by using the private access modifier
+
+Composition
+
+Abstract classes
+- classes can be marked as abstract, meaning they can not be instantiated 
+(the do not have a body, must be a void)
+public abstract void walk();
+public abstract void talk();
+
+Interfaces*
+- An interface is a set of rules that defines behavior
+- standalone files
+- are implemented rather than extended
+- used in inheritance chain to enforce behavior in subclasses
+- methods marked as abstact in an abstract superclass must be implemented in child subclasses
+
+Subclass constructor
+super();  //call super first, calling all the codes in the super 
+- always be the first thing in the constructor
