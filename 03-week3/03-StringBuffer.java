@@ -40,3 +40,47 @@ fruits.append(", oranges").insert(6, ", bananas").replace(0, 1, "A");
 System.out.println(fruits); // Result: Apples, bananas, oranges 
 
 
+//Example
+The following example shows the creation of a StringBuffer object and some of its operations:
+
+StringBuffer sb = new StringBuffer();
+
+System.out.printf("Length = %d\n", sb.length()); // Result: Length = 0
+
+
+Append two strings:
+
+sb.append("abc");
+sb.append("123");
+System.out.printf("Length = %d, String:%s\n", sb.length(), sb.toString());
+// Result: Length = 6, String:abc123
+
+
+Insert a string at a specified position:
+
+sb.insert(3, "DEF");
+System.out.printf("Length = %d, String:%s\n", sb.length(), sb.toString());
+// Result: Length = 9, String:abcDEF123 
+
+
+Delete two characters from the specified starting position:
+
+sb.delete(3, 5);
+System.out.printf("Length = %d, String:%s\n", sb.length(), sb.toString());
+// Result: Length = 7, String:abcF123 
+
+Reverse:
+
+sb.reverse();
+System.out.printf("Length = %d, String:%s\n", sb.length(), sb.toString());
+// Result: Length = 7, String:321Fcba 
+
+
+Return a string without its first and the last characters:
+
+String withoutFirstAndLast = sb.substring(1, sb.length() - 1);
+System.out.printf("Without first and last: %s\n", withoutFirstAndLast);
+// Result: Without first and last: 21Fcb 
+
+Note that withoutFirstAndLast() is a copy of the string within the StringBuffer; 
+because substring() is a non-destructive, read-only operation, the contents of the StringBuffer are unchanged.
