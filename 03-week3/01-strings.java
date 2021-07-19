@@ -1,4 +1,4 @@
-String Declarations
+//String Declarations
 
 Variables representing string objects are declared using the String class types as follows:
 String s;
@@ -18,7 +18,7 @@ The constructor of the String class can also be used to create string objects, t
 String test = new String("Java");
 
 
-String Methods
+//String Methods
 String input = "Hello! How are you?";
 
 //length() - Computes the length (size) of the given string:
@@ -118,3 +118,57 @@ position = firstString.compareTo(secondString); // returns 6
 //Similar to equalsIgnoreCase(), compareToIgnoreCase() compares two strings but ignoring case differences.
 //Strings should never be compared using the double equals (==) sign. This operator is only valid for comparing primitive values.  
    
+
+//String Conversions
+To convert the string into a primitive type, it must be converted using a parser method.
+
+String input = "123"; // a sequence of three characters
+int multiplyIt = input * 10; // this won't work! input is a string
+
+int iValue = Integer.parseInt(input); // returns the integer 123
+int multiplyIt = iValue * 10; // now we can do math
+
+input = "123.45"; // a sequence of 6 character
+double dValue = Double.parseDouble(input); // returns the double 123.45 
+  
+  
+The other primitive types have similar parser methods, such as Boolean.parseBoolean() and Float.parseFloat().
+  
+  
+//Composing Strings
+New strings may be composed from existing values. A common use case is to convert a primitive value to a string. 
+To do so, the String class provides a static valueOf() method with many overloaded forms to accept any type of primitive value.
+
+int iValue = 123;
+String result = String.valueOf(iValue); // returns the string "123"
+
+double dValue = 123.45;
+result = String.valueOf(dValue); // returns the string "123.45"
+
+boolean bValue = true;
+result = String.valueOf(bValue); // returns the string "true"
+
+char cValue = 'A';
+result = String.valueOf(cValue); // returns the string "A"
+
+To combine strings, the concatenation operator (+) is used:
+
+String result;
+String str1 = "hello";
+String str2 = "how are you";
+result = str1 + str2; // returns "hellohow are you"
+result = str1 + " " + str2; // returns "hello how are you"
+result = str1 + '!' + " " + str2 + "?"; // returns "hello! how are you?"
+result = "Hi! " + str2; // returns "Hi! how are you"
+  
+Java will automatically convert the non-string values to strings. For example:
+
+String str1 = "hello";
+boolean b = true;
+int i = 5;
+String result = str1 + b + 5; // returns the string "hellotrue5"
+  
+String str1 = "hello" + 4 + 5; // "hello45", not "hello9". This is because a string is found before the + between the two numbers is found. 
+String str1 = 4 + 5 + "hello" + 4 + 5; //"9hello45". Until the first string is found, + can operate as a mathematical addition operator.
+
+  
