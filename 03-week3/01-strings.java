@@ -172,3 +172,15 @@ String str1 = "hello" + 4 + 5; // "hello45", not "hello9". This is because a str
 String str1 = 4 + 5 + "hello" + 4 + 5; //"9hello45". Until the first string is found, + can operate as a mathematical addition operator.
 
   
+//Splitting Strings
+the static split() method that is built into the String class
+  This method accepts a delimiter as its argument, which is the substring upon which to split. 
+  
+String fruits = "apples, bananas, oranges";
+String[] parts = fruits.split(", ");
+
+"apples", "bananas" and "oranges"
+
+
+
+
