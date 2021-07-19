@@ -177,10 +177,13 @@ the static split() method that is built into the String class
   This method accepts a delimiter as its argument, which is the substring upon which to split. 
   
 String fruits = "apples, bananas, oranges";
-String[] parts = fruits.split(", ");
+String[] parts = fruits.split(", ");  //look for ", " then seperated as String 
 
-"apples", "bananas" and "oranges"
+//"apples", "bananas" and "oranges"
 
+//example
+String str = "Hello-Welcome-to-Java-World";
+String parts[] = str.split("-");
 
-
+{"Hello", "Welcome", "to", "Java", "World"}
 
