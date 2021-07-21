@@ -5,7 +5,7 @@ public class P01_IfAgeTest {
 
     public static void main(String[] args) {
 
-        System.out.print("What is your age? ");
+        System.out.println("What is your age? ");
 
         // Create Scanner to solicit user input
         Scanner scanner = new Scanner(System.in);
