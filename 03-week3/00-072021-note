@@ -42,8 +42,11 @@ Creating strings
 - but we can treat them as if they are mutable
   String x = "abc";
   x = "abc123";  //A new string behind the scenes
-
+  //like throw out the old thing to the garbage collection and store the new thing
+  //however the type can not be changed since String are immutable
 - Strings can be concatenated (combined) using +
+- java.lang.String has a static method called valueOf() that accepts any type of primitive:
+  String.valueOf(123) //"123"
 
 Q:
 how to re-assign string value in java?
@@ -52,29 +55,35 @@ String x = "abc";
 What if I want to reassign the value in x?
 A:
 yes, you can and that's what we mean by whatever it was pointing to is now marked for garbage collection if there are no more references to it
-so in the above, you are doing exactly that
-x is initially pointing at the memory location that contains the string "abc"
+so in the above, you are doing exactly that x is initially pointing at the memory location that contains the string "abc"
 you then reassign it to a new memory location where the new string "abc123" is found
-but because x is of type String what it points to can't be changed
-because Strings are immutable
+but because x is of type String what it points to can't be changed, because Strings are immutable
 
 String math
 - string are concatenated using the same symbol by which number are added : +
 - java read from left to right to perform concatenation - as soon as a string is encountered, everything after it will be treated as a string
+  String x = "abc"+123; //abc123
 - but since it reads from left to right, if numbers precede strings, the mathematical addition operation will be carried out
+  String x = 123+456+"abc"; //579abc
   
 StringBuffer
 - manipulating many strings can be computationally inefficient
 - the StringBuffer class offers a more efficient means of dealing with strings and introduces some added functionality
+  StringBuffer sb = new StringBuffer();
+  sb.append("abc")  //abc
+  sb.append("ghi")  //abcghi
+  sb.insert(3, "def");   //abcdefghi //put in the position 3
+  sb.delete(2, 4);  //abefghi //delete from position 2 to 4, position 2 and 3
 
 Regular Expressions
+- look for patterns in the strings in each language
 java support for regex is in java.util.regex
 https://regex101.com/
 
 Working with files (I/O)
 - java has built-in support for file input/output in the java.io package
 - java I/O uses reader, writers and streams to move data to and from files
-- data to be read to/written from files can be textual (ASCII) or binary
+- data to be read to/written from files can be textual (ASCII)(text file) or binary
 - file systems are complex and OS-specific, but the JVM's native interface does the dirty work
 - exception handling is critical when working with files, becuase so many thing can go wrong
 - files must be opened/closed properly
@@ -82,32 +91,51 @@ Working with files (I/O)
 The File class
 - java.io.File provide many handy methods to manipulate files:
   File file = new File("file.txt");
-  .exists()
-  .length()
-  .hidden()
+  file.exists()
+  file.length()
+  file.isHidden();
+  file.delete();
   
-Streams
+Streams - when start reading from or writing a file
 - streams are like tunnels for data in and out of files
 - streams are also used in other context (networking)
 - java.io has many types of streams for different uses
-- a very simple input stream class is FileInputStream
-  FileInputStreamfile = new FileInputStream("file.txt");
+- a very simple input stream class is FileInputStream;
+  FileInputStream file = new FileInputStream("file.txt"); //read input from a file
+- with this stream created, it can then be fed into a reader or writer
 
 Reading ASCII(text) files
 - Use the same Scanner class that we have used for console input 
 
-  FileInputStreamfile = new FileInputStream("file.txt");
-  Scanner scanner = new Scanner (stream);
+  FileInputStream stream = new FileInputStream("file.txt");
+  Scanner scanner = new Scanner(stream); //pass the stream to the scanner
   //read lines from file one at a time until the end
-  while(scanner.hasNextLine()) {
-    String line = scanner.nextLine();
+  while(scanner.hasNextLine()) {  //reading line by line until reaches the last one
+    String line = scanner.nextLine(); //like overloaded
     }
+    
+This also works:
+  Scanner scanner = new Scanner(new File("file.txt"));
 
 Writing ASCII (txt) files
 - FileOutputStream is a stream type that can send text to a file
-
+  FileOutputStream stream = new FileOutputStream("file.txt");
 - FileWriter is most commonly used writer for files
-
+  Writer writer = new FileWriter(stream);
+  writer.write("here is some text")   //using the method .write()
+- PrintWriter can also write to files using the familiar println() method
+  PrintWriter writer = new PrintWriter(stream);
+  writer.println("here is some text")   //using a different package
+- This also works:
+  PrintWriter writer = new PrintWriter("file.txt");
 
 Closing files
 - files should always be closed to avoid leaving them in an open state
+- for write operations, the stream and the writer can be closed:
+  FileOutputStream stream = new FileOutputStream("file.txt");
+  PrintWriter writer = new PrintWriter(stream);
+  writer.println("here is some text");
+  stream.close();
+  writer.close();
+
+ 
