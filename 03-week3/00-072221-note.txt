@@ -1,1 +1,63 @@
 
+Exceptions are not meant to catch errors you make while coding
+
+
+The Java Stack
+two primary memory
+HEAP - shrink grow as you go, static variable
+stack - temporary
+- java programs run in a temporary memory space called the stack
+  often compared with the heap, which is the JVM's shared memory
+- within the stack, java keeps a running list of all the classes and methods it uses,
+  this is called the stack trace and is essential for debugging
+  stack trace is like a log 
+- so what happens when we run the code from the previous slide with faulty input (For example, x)
+- java will handle the exception for us print the stack trace
+- lots of good info, but not a great user experience, stack traces should only be seen by developers
+
+Handling exceptions
+- you should explicitly handle possible errors using exception handling
+- the keywords try and catch begin and end blocks of code that are subject to exception conditions
+- common exceptions are covered by classes extending java.lang.Exception
+catch(exception type #1)
+catch(exception type #2)
+
+Unchecked exceptions
+- unchecked exceptions are those that are not checked by the compiler
+- code can compile even if it contains obvious unchecked exception conditions:
+int x = 0
+int y = 5 /x    //division by zero: guaranteed to cause an AritheticException
+- it is not compiler's job to step into code and predict what may happen
+- unchecked exception are often called runtime exceptions and are subclasses of java.lang.RunTimeException
+- all built into java
+
+Unchecked exceptions
+-unchecked exceptions are often the result of devleoper error or failure to participate possible inputs and states
+- these are not exception you would normally try catch 
+- the most common exception is NullPointerException - it results from trying to operate on a null value
+- null should always be presumed and handled properly
+
+Avoiding common unchecked exceptions
+
+Checked exceptions
+- checked exceptions are checked by the compiler and can prevent code from compiling if not handled properly
+
+The throw keyword
+- the keyword throws can be added to the method declaration
+- this tells other methods that they must handle any exceptions that the method creates
+- checked by compiler
+
+always put try catch in main as it is the entry point
+
+Custom application exception
+- in larger application, it is good practice to write your own exceptions to fit your specific business case
+- custom exceptions extends java.lang.Exception and are treated as checked exception (with try/catch)
+
+Finally
+- like what you do at the end to clean yourself
+- finally will run no matter what happened in try or catch
+
+Error - critical
+- java.lang.Exception is a subclass of java.lang.Throwable
+- Throwable also has a subclass called java.lang.Error
+- Errors are critical faults that you would never wnat to explicitly catch
