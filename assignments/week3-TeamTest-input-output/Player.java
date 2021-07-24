@@ -20,7 +20,7 @@ public class Player {
 
     public double computeScoringAverage(){  //returns a random double value
         Random random = new Random();   //using the package Random
-        double r = random.nextDouble();     //for double value greater or equal to 0.0 but less than 1.0
+        double r = random.nextDouble();     //for double value greater or equal to 0.0 but less than 10.0
         double value = 10.0 * r;    // a random double value between 0.0 and 10.0.
         return value;
     }
