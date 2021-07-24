@@ -1,8 +1,19 @@
+Exceptions
+- programs can and will break, no matter the skill of the developers
+- you need to expect the unexpeccted and think through what can go wrong
+- an exception is an error condition, it is an exception to the normal running of your code
+- but try not to call exceptions "error" (at least in Java)
+- dealing with exceptions is called exception handling
+- exceptions can be checked an unchecked
+- improper or inadequate exception handling can be very costly
+- java.lang.Throwable is a superclass from which java.lang.Exception is derived (along with java.lang.Error)
 
-Exceptions are not meant to catch errors you make while coding
+- Exceptions are not meant to catch errors you make while coding; these are identified by the compiler (IDE)
+- Java will happily let you compile and run code that is doomed to fail
+  - this is not a shortcoming, it is beyond the scope oof the compiler
 
 
-The Java Stack
+The Java Stack 
 two primary memory
 HEAP - shrink grow as you go, static variable
 stack - temporary
@@ -15,12 +26,16 @@ stack - temporary
 - java will handle the exception for us print the stack trace
 - lots of good info, but not a great user experience, stack traces should only be seen by developers
 
+
 Handling exceptions
 - you should explicitly handle possible errors using exception handling
 - the keywords try and catch begin and end blocks of code that are subject to exception conditions
 - common exceptions are covered by classes extending java.lang.Exception
-catch(exception type #1)
-catch(exception type #2)
+try{
+} catch(exception type #1) {
+} catch(exception type #2) {
+}
+
 
 Unchecked exceptions
 - unchecked exceptions are those that are not checked by the compiler
@@ -29,12 +44,13 @@ int x = 0
 int y = 5 /x    //division by zero: guaranteed to cause an AritheticException
 - it is not compiler's job to step into code and predict what may happen
 - unchecked exception are often called runtime exceptions and are subclasses of java.lang.RunTimeException
-- all built into java
+- these exceptions are all built into java, you would not normally create custom unchecked exceptions
 
 Unchecked exceptions
 -unchecked exceptions are often the result of devleoper error or failure to participate possible inputs and states
 - these are not exception you would normally try catch 
 - the most common exception is NullPointerException - it results from trying to operate on a null value
+- NPEs should never happen; they can reflect poorly on the developer (but they happen to everyone!)
 - null should always be presumed and handled properly
 
 Avoiding common unchecked exceptions
@@ -42,16 +58,18 @@ Avoiding common unchecked exceptions
 Checked exceptions
 - checked exceptions are checked by the compiler and can prevent code from compiling if not handled properly
 
-The throw keyword
+The throws keyword
 - the keyword throws can be added to the method declaration
 - this tells other methods that they must handle any exceptions that the method creates
-- checked by compiler
+- checked by compiler and will allow the code to compile
 
 always put try catch in main as it is the entry point
 
 Custom application exception
 - in larger application, it is good practice to write your own exceptions to fit your specific business case
 - custom exceptions extends java.lang.Exception and are treated as checked exception (with try/catch)
+- using super() for the methods in extends superclass like in Exceptions
+- calling the method must either handle the exception or pass it along
 
 Finally
 - like what you do at the end to clean yourself
@@ -61,3 +79,4 @@ Error - critical
 - java.lang.Exception is a subclass of java.lang.Throwable
 - Throwable also has a subclass called java.lang.Error
 - Errors are critical faults that you would never wnat to explicitly catch
+ 
