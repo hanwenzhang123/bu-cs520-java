@@ -12,3 +12,12 @@ Arrays provide direct access to the elements stored in the data structure.
 The classes in the Collection hierarchy are used when the number of elements varies during the lifetime of the application. 
   They also provide operations for insertion, removal, and lookup of objects.
     
+//Polymorphic Variable Declaration
+List<String> nameList = new ArrayList<String>();
+
+The general advice is to be as generic as possible on the left side and as specific as necessary on the right side.
+Because java.util.List is a subclass of java.util.Collection , we could try to be even more generic on the left side: Collection<String> nameList = new ArrayList<String>();
+
+Collection<String> nameList = new ArrayList<String>();
+  
+  
