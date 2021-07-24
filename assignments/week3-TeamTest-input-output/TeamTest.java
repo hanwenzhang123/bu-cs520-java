@@ -33,6 +33,7 @@ public class TeamTest {
             System.out.println("Something went wrong, please check!");
         } finally {     //close the scanner
             scanner.close();
+            //if(scanner != null) scanner.close();
         }
     }
 
