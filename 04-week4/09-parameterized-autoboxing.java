@@ -44,3 +44,22 @@ Map<String, Employee> myMap = new HashMap<String, Employee>();
 myMap.put("Employee 1", new Employee("Alice"));
  
   
+//Autoboxing
+
+// How things used to be done before parameterized types and autoboxing
+   List myList = new ArrayList();
+   myList.add(new Integer(5)); // Could not add raw primitive
+   Integer myInteger = (Integer)myList.get(0);
+   int myInt = myInteger.intValue();
+   System.out.println(myInt + " * 10 = " + (myInt * 10));
+
+
+//The introduction of autoboxing allowed primitives to be used directly rather than wrapping them, allowing some degree of interchangeability:
+   // With parameterized types and autoboxing
+   List<Integer> myList2 = new ArrayList<Integer>();
+   myList2.add(5); // Add raw primitive
+   System.out.println(myList2.get(0) + " * 10 = " + (myList2.get(0) * 10));
+
+
+No casting or reduction of a wrapper class type to a primitive type is required. However, note that the list cannot be defined as List<int>; the backing class type is still necessary.
+  
