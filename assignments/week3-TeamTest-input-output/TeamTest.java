@@ -22,7 +22,7 @@ public class TeamTest {
                 String name = scanner.nextLine();
                 String position = scanner.nextLine();
                 String year = scanner.nextLine();
-                String line = scanner.nextLine();   //the variable for storing the fifth line "-----"
+                scanner.nextLine();   //just scan the fifth line, the "-----" in txt file, not doing anything
 
                 totalScoringAverage += createPlayer(number, name, position, year);   //add the return double value to the variable totalScoringAverage
             }
