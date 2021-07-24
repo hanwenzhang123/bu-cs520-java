@@ -38,7 +38,7 @@ int[] salaries = {50000, 51000, 52000, 53000, 54000};
 // The variable type only needs to be declared on the left side, and the explicit size is not given. 
 // This is because Java can determine the size automatically based on the number of elements provided.
 
-A String array could also be created to hold the employees' names:
+A String array could also be created to hold the employees names:
 String[] names = {"Alice", "Bob", "Charlie", "Dave", "Ed"};
 
 
