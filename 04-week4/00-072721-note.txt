@@ -1,0 +1,29 @@
+Scalar vs Multilvalue Variable Types
+- the vriables types we have seen so far (int , String, Employee, etc) and store one value at one time
+- these are called scalar variables and fit their purpose well
+- hoewver, we also need data structures
+
+
+Arrays 
+- an array is a single varibales that can hold multiple values
+- an java class can be defined as an array, but the array can only instances of the defined class
+- denoted by square brackets: []
+- upon createion, arrays hold
+
+Creating arrays
+int[] myArray = new int[5]    //the size of array has to be declared first
+the left of the [] always empty, just for it is for array
+
+Array is not empty, always have somthing, including null
+
+Array member values & assignmnet
+- the square brackets are also used to access a specific member of the array; this number is called the index(also called the position)
+- remember to start counting with zero
+- array values can be written as well as read
+- if the index is smaller or larger than the size of the array, java will throw an ArrayIndexOutOfBoundsException exception
+
+Initializing arrays at creation time
+- arrays can be populated when they are created using this syntax
+int [] myArray = {7, 8, 24, 45, 90} 
+- these are sam types of arrays as 
+- can not change the types at all\
