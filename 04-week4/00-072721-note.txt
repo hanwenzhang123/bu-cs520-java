@@ -2,7 +2,7 @@ Scalar vs Multilvalue Variable Types
 - the vriables types we have seen so far (int , String, Employee, etc) and store one value at one time
 - these are called scalar variables and fit their purpose well
 - hoewver, we also need data structures
-
+ 
 
 Arrays 
 - an array is a single varibales that can hold multiple values
