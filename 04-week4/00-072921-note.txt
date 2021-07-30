@@ -1,1 +1,88 @@
+Arrays are very efficient in terms of memory, in that it is contiguous, and thus iteration over arrays and certain operations are faster because of it
+
+Arrays are not always a good fit (literally!)
+arrays are useful but have some important characteristics
+- the size must be declaraed at instantiation time
+- size may not change
+-
+the fixed size
+
+Collections
+- like arrays, collections are data structures that hold groups of things
+- extended from java.util.Collection
+- collections do not need to declare their size and can shrink and grow as much as needed
+- this does not make them better than arrays, just suited to different uses
+- different collection types can behave very differently, depending on several factors, inlcuding
+  - whether the order of items matters
+  - how items are sorted
+  
+Lists
+- the most basic type of Collection is called a List
+- java.util.List is just an interface, so it can not be instantiated; we need a concrete class implementing it
+- the most common list is called ArrayList(not an arrayl just uses an array behind the scenes)
+- lists allow you to:
+  add() an item to the end of the list
+  set() an item within the list at a specific position
+  get() an item from the list at a specific position
+  remove() an item from the list
+  clear() the list
+  find the size() of the list
+  
+List Example
+List<String> myList = newArrayList<String>();
+
+Sets
+- A set is a collection that cannot contain duplicates
+- java.util.Set is just an interface, so it can not be instantiated; we need a concrete class implementing it
+- sets have a slightly different purpose than lists
+- items within a set cannot be accessed by index, only by iteration 
+- you can not actually pull something out but instead, interating and check if it is exists
+- common set types
+  - Hashset: items in no predictable order
+  - LinkedHashSet: items guaranteed to be in the order in which they were added, a link in it but you do not see it
+  - TreeSet: items are sorted using defined or default algorithms
+- 
+
+Looping through Collections
+- since we can determine a collection's size and access any member by index, we can loop through it with a simple for loop
+
+List<String> myList = new ArrayList<String>();
+myList.add("Item 1");
+myList.add("Item 2");
+myList.add("Item 3");
+
+for(int i=0; i<myList.size(); i++){
+  String nextItem = myList.get(i);
+  System.out.println(nextItem);
+  }
+  
+- or even simpler:
+for(int ){
+  String nextItem = myList.get(i);
+  System.out.println(nextItem);
+  }
+   
+Iterating through Collections
+- collections have a built-in mechanism for looping through them known as an iterator
+- calling the iterator() method returns an Iterator instance:
+  Iterator<String> iterator = myList.iterator();
+- iterators keep track of loop progress
+
+Listiterator
+
+Maps
+- A map is a data structure that contains key-value pairs
+- Maps are not collections! (though a frequent misconception)
+- think of Map like a dictionary: each key (word) has a value (definition)
+- Maps may not have duplicate keys, but duplicate values are OK
+- instead of using add() to add a new item, Maps use put() and require two arguments: the key and value
+
+
+Common Map Types
+- HashMap: Items in nopredictable order (horrible for 
+- LinkedHashMap: Items guaranteed to be in the order in which they were added
+- TreeMap: Items are sorted by their keys using defined or default algorithms
+
+
+
 
