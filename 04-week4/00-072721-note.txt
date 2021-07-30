@@ -1,29 +1,109 @@
 Scalar vs Multilvalue Variable Types
 - the vriables types we have seen so far (int , String, Employee, etc) and store one value at one time
 - these are called scalar variables and fit their purpose well
-- hoewver, we also need data structures
- 
+- however, we also need data structures that can store more than one value in a variable at a time
+ a single variable that holds multiple values
 
 Arrays 
 - an array is a single varibales that can hold multiple values
 - an java class can be defined as an array, but the array can only instances of the defined class
 - denoted by square brackets: []
-- upon createion, arrays hold
+- upon createion, arrays hold default values in all position
 
 Creating arrays
+//when you see that[], you automatically know that it is array
 int[] myArray = new int[5]    //the size of array has to be declared first
-the left of the [] always empty, just for it is for array
+- the left of the [] always empty, just for it is for array
+- right side of the [] is the number, the size of the array
 
-Array is not empty, always have somthing, including null
+when creating int, the inital value would be 0
+When creating String the initial values would be null
+the Array is not empty, always have somthing, a default value, including null and 0
 
 Array member values & assignmnet
 - the square brackets are also used to access a specific member of the array; this number is called the index(also called the position)
 - remember to start counting with zero
+ int myValue = myArray[5];  //will read the 6th value
 - array values can be written as well as read
-- if the index is smaller or larger than the size of the array, java will throw an ArrayIndexOutOfBoundsException exception
+ myArray[7]= 46;
+- if the index is smaller or larger than the size of the array, java will throw an ArrayIndexOutOfBoundsException exception, unchecked exception
+- the length of an array can be read with the length property
+int arrLength = myArray.length;  //return interger but no (), length is not a method
 
 Initializing arrays at creation time
 - arrays can be populated when they are created using this syntax
-int [] myArray = {7, 8, 24, 45, 90} 
-- these are sam types of arrays as 
-- can not change the types at all\
+int[] myArray = {7, 8, 24, 45, 90} 
+//no size given, iti s defined by the list of values
+- or more simply:
+int[] myArray =] P7, 8, 24, 45, 90};
+//java can determine the array size and type
+- these are same types of arrays as those created without explicit values, and the initial values can be changed
+- but the number of values declared at creation time must remain the same
+- length and size and types can not change at all
+
+Arrays of custom types
+- any class type can be used as an array
+Employee[] staff = new Employee[5];
+staff[0] = new Employee("Alice", 60000);
+staff[1] = new Employee("Bon", 50000);
+staff[2] = new Employee("Charlie", 40000);
+
+or 
+Employee[] staff = {   //each one here is an anonymous instantiate of employees that were pumping in
+ staff[0] = new Employee("Alice", 60000),
+ staff[1] = new Employee("Bon", 50000),
+ staff[2] = new Employee("Charlie", 40000)
+}
+
+Arrays are immutable objects
+- arrays are proper java objects, even if they contain primitives
+- array are immutable. unchangeable
+- the size of an array is set upon instantiation, and the array may not grow or shrink after that
+- if the daya structure needs to shrink/grow or its size is unknown at instantiation time, 
+  a more complex/suitable type will be needed, which will be like Lists, Sets and Maps
+ 
+ Iterating through Arrays
+ to loop through an array, a simple for loop can be used:
+ String[] myArray = {"apples", "bananas", "oranges"};
+ for(int i = 0; i < myArray.length; i++){
+  System.out.println(myArray[i]);  //access array by index
+ }
+ 
+ or for-each loop   //simpler, but we do not know the loop #
+ for(String furit : myArray){
+  System.out.println(fruit);
+ }
+ 
+Multidimentional Array
+- Multidimentional arrays have multiple levels of nested subarrays
+- more than one set of brackets consecutively you know it's a multi dimensional array this is to level array.
+- each subarray is defined with its own []
+int[][] myArray = new int[3][5];
+The first number, 3 would be the outer most array and the 5 there would indicate the innermost array 
+It's three things each one of those things is an array of like five
+- this means that each of the members of the first array has its own array with the length of the second
+- multidimensional arrays can have many levels (but three is about the most you would ever see)
+ 
+ "Matrix" Multidimentional Array
+ - two level arrays in which the inner array is the same size for all membres of the outer array
+ - often called matrix arrays because the first index is analogous to a row and the second to a colum in a grid layout
+ int[][] myArray = new int[3][4];  //3 rows and 4 columns
+ 0,0  0,1  0,2  0,3
+ 1,0  1,1  1,2  1,3
+ 2,0  2,1  2,2  2,3
+ String[][] arr = new String[3][3];
+- like in excel sheet
+
+"Jagged" multidimensional arrays
+- only the first index is required, so this is legal
+int[][] myArray = new int [3][];
+- the nested arrays will need to be instantiated at some point
+myArray[0] = new int[3];
+myArray[1] = new int[4];
+myArray[2] = new int[2];
+- the nested arrays can be of different sizes; these are called irregular or jagged arrays
+0,0  0,1  0,2
+1,0  1,1  1,2  1,3
+2,0  2,1
+ 
+   
