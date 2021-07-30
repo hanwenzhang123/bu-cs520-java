@@ -1,11 +1,13 @@
 Arrays are very efficient in terms of memory, in that it is contiguous, and thus iteration over arrays and certain operations are faster because of it
 
 Arrays are not always a good fit (literally!)
-arrays are useful but have some important characteristics
-- the size must be declaraed at instantiation time
-- size may not change
--
-the fixed size
+- arrays are useful but have some important characteristics
+  - the size must be declaraed at instantiation time
+  - size may not change
+  - default values are inserted for each number at instantiation
+- the fixed size and immutability of arrays make them the perfect choice in the right situation
+- howver, often we do not know the size yet or the size will change
+- in such situation, we use collection
 
 Collections
 - like arrays, collections are data structures that hold groups of things
@@ -13,13 +15,15 @@ Collections
 - collections do not need to declare their size and can shrink and grow as much as needed
 - this does not make them better than arrays, just suited to different uses
 - different collection types can behave very differently, depending on several factors, inlcuding
-  - whether the order of items matters
-  - how items are sorted
+  - whether the order of items matters (arrays are all about order)
+  - how items are sorted  (arrays can be sorted, by default just the order of the item being pushed)
+  - whether the list can contain duplicates (array yes)
   
 Lists
+- like a shopping list, add it at the end
 - the most basic type of Collection is called a List
 - java.util.List is just an interface, so it can not be instantiated; we need a concrete class implementing it
-- the most common list is called ArrayList(not an arrayl just uses an array behind the scenes)
+- the most common list is called ArrayList(not an array; just uses an array behind the scenes)
 - lists allow you to:
   add() an item to the end of the list
   set() an item within the list at a specific position
@@ -27,21 +31,29 @@ Lists
   remove() an item from the list
   clear() the list
   find the size() of the list
+  find the indexOf() a member of the list
   
 List Example
 List<String> myList = newArrayList<String>();
 
+Parameterized Types
+- data structures support parameterized types, which designate the type of objects that can contain within <> brackets
+  List<String> myList = new ArrayList<String>();
+- the type is technically optional but should always be specific
+
 Sets
+- like an universal value
 - A set is a collection that cannot contain duplicates
 - java.util.Set is just an interface, so it can not be instantiated; we need a concrete class implementing it
 - sets have a slightly different purpose than lists
 - items within a set cannot be accessed by index, only by iteration 
 - you can not actually pull something out but instead, interating and check if it is exists
-- common set types
+- Always use the simpliest type to meet your needs
+
+Common Set Types
   - Hashset: items in no predictable order
   - LinkedHashSet: items guaranteed to be in the order in which they were added, a link in it but you do not see it
   - TreeSet: items are sorted using defined or default algorithms
-- 
 
 Looping through Collections
 - since we can determine a collection's size and access any member by index, we can loop through it with a simple for loop
@@ -57,8 +69,7 @@ for(int i=0; i<myList.size(); i++){
   }
   
 - or even simpler:
-for(int ){
-  String nextItem = myList.get(i);
+for(String nextItem : myList){
   System.out.println(nextItem);
   }
    
@@ -66,9 +77,57 @@ Iterating through Collections
 - collections have a built-in mechanism for looping through them known as an iterator
 - calling the iterator() method returns an Iterator instance:
   Iterator<String> iterator = myList.iterator();
-- iterators keep track of loop progress
+- iterators keep track of loop progress and allow you to go to the next() item in the collection, and can test if the collection hasNext)()
+while(iterator.hasNext()){    //return a boolean, as long as it returns true
+  String nextItem = iterator.next();    //automatically increments the iterator
+  System.out.println(nextItem);
+}
 
 Listiterator
+- Collections of type List have a special iterator called ListIterator
+- ListIterator works just like Iterator, but it needs some extra functionality:
+  - bidirectional traversal
+  - modification of list elements
+  - current loop iteration index
+    
+    #1
+    // Get the forward iterator from the beginning of the list
+		ListIterator<String> forwItr = nameList.listIterator();
+		int forwIndex = forwItr.nextIndex();
+
+		// Get the backward iterator from the end of the list
+		int size = nameList.size();
+		ListIterator<String> backItr = nameList.listIterator(size);
+		int backIndex = backItr.previousIndex();
+
+		// Examine the elements at both the ends at the same time
+		while (forwIndex <= backIndex) {
+			String forwElement = forwItr.next();
+			String backElement = backItr.previous();
+			System.out.printf("Forward (%d): %-8s; Backward (%d): %-8s\n", forwIndex, forwElement, backIndex,
+					backElement);
+			forwIndex = forwItr.nextIndex();
+			backIndex = backItr.previousIndex();
+		}
+    
+    #2
+    // Get the listIterator and iterate first in the forward direction
+		ListIterator<Employee> itr2 = employeeList.listIterator();
+
+		while (itr2.hasNext()) {
+			int nextIndex = itr2.nextIndex();
+			Employee nextElement = itr2.next();
+			System.out.printf("  Next Element at index %d: %s\n", nextIndex, nextElement);
+		}
+
+		System.out.println();
+
+		// Now we are at the end; iterate in the backward direction
+		while (itr2.hasPrevious()) {
+			int prevIndex = itr2.previousIndex();
+			Employee prevElement = itr2.previous();
+			System.out.printf("  Previous Element at index %d: %s\n", prevIndex, prevElement);
+		}
 
 Maps
 - A map is a data structure that contains key-value pairs
@@ -76,13 +135,13 @@ Maps
 - think of Map like a dictionary: each key (word) has a value (definition)
 - Maps may not have duplicate keys, but duplicate values are OK
 - instead of using add() to add a new item, Maps use put() and require two arguments: the key and value
-
+- maps should always be defined with the class type, just like Collections, but need types for both keys and values
+Map<String, Employee> m = new HashMap<String, Employee>();
 
 Common Map Types
-- HashMap: Items in nopredictable order (horrible for 
+- HashMap: Items in nonpredictable order (horrible for locating)
 - LinkedHashMap: Items guaranteed to be in the order in which they were added
 - TreeMap: Items are sorted by their keys using defined or default algorithms
 
-
-
-
+//Access all the keys in the map
+Collection<String> nameKeys = salaryMap.keyset()
