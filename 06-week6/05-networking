@@ -1,0 +1,34 @@
+The core Java distribution provides basic networking capability for 
+both the TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) based communication protocols. 
+
+In this lecture, we will look into TCP-related classes such as URL, URLConnection, ServerSocket and Socket.
+Creating Java web resources normally requires Jakarta EE (formerly known as Java Enterprise Edition or J2EE), 
+which is a specification designed for web and distributed programming.
+
+Working with URLs
+The URL (Uniform Resource Locator) class is used to contain metadata about a web resource. 
+The constructor of the class takes the web resource's address (URL) as its argument. 
+The following code segment shows how the URL object is created. 
+If the specified web page is not a valid URL, an exception is thrown.
+
+try {
+    String page = "https://www.bu.edu/met/degrees-certificates/ms-computer-information-systems?c=webappdev";
+    URL urlObject = new URL(page);
+} catch (Exception e) {
+    // This will be a MalformedURLException if the page URL is invalid
+    e.printStackTrace();
+}
+
+Method	Value Returned	Example Result
+String getProtocol()	The URL's protocol name	https
+String getHost()	The URL's host (domain) name	www.bu.edu
+int getPort()	The URL's port number, or -1 if unspecified	-1
+int getDefaultPort()	The URL's default port number	443
+String getPath()	The URL's path part	/met/degrees-certificates/ms-computer-information-systems
+String getQuery()	The URL's query string (parameter pairs)	c=webappdev
+String getFile()	The URL's full path after the host portion	/met/degrees-certificates/ms-computer-information-systems?c=webappdev
+
+
+
+
+URLConnection Class
