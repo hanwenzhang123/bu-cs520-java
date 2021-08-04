@@ -1,0 +1,25 @@
+1. what is JAR
+JAR = Java ARchive 
+(like a zip file with all the compiled source code - .class files)
+    - compressed format of a compiled java projects (programs)
+    - contains .class files + meta data and some other resources
+    - used to distribute java code/libraries for use by other projects 
+    - direct execution of java program (without any IDE)
+    
+2. why do we need JAR files
+A JAR file allows Java runtimes to efficiently deploy an entire application, 
+including its classes and their associated resources, in a single request. 
+JAR file elements may be compressed, shortening download times. 
+A JAR file may contain a manifest file, that is located at META-INF/MANIFEST.
+
+3. how to create JAR files from Java Project
+- export then select option JAR file, choose a file path address
+- choose the main class
+
+4. How to extract contents from a JAR file (Java Decompiler)
+- terminal - cd that location
+  java -jar {name}.jar
+- send jar file to anyone and the person can inject the jar file to his/her program
+- right click, open iwth, you can use like Jar Launcher.app to unzip to get the folder
+- Java Decompiler
+- JD GUI
