@@ -1,4 +1,4 @@
-In addition to the arrays and the array lists, the Java programming language provides various implementations of commonly used data structures. 
+In addition to the arrays and the array lists, the Java programming language provides various implementations of uncommonly used data structures. 
   These include the linked lists, queues, double ended queues, and stacks.
   
 //LinkedList
