@@ -1,0 +1,138 @@
+Rarely used by professional Java developer
+The goal of training courses
+- learn exact language syntax
+- comprehensive subject matter coverage
+The goal of CS520
+- teach important paradigms such as object orientation
+- algorithms and CS theory
+- apply theory to practice
+- extend beyond the course
+
+Uncommon Data Structures - linkedlists, queuees, stacks
+
+LinkedList
+- java.util.LinkedList is another type of List similar to ArrayList (99%)
+- Just like ArrayList, you can add(), get() and remove() items
+- But LinkedList provides convenient methods that arraylist doesnot
+  addFirst() addLast() getFirst() getLast() removeFirst() removeLast()
+Linkedlist is better if the first and last methods will actually be used, better performance but more complicated
+otherwise, arraylist is the popular choice
+the performance difference will only be significant
+
+Queues
+like a queue of people
+- a queue is a first-in first-out (FIFO) data structure
+- Queues introduces several methods
+Action             throw an exception if operation fails       Return false/null if operation fails
+Add an item to the end of a queue           add()               offer()
+Get the first item in a queue               element()           peek()
+Remove the item at the head of a queue      remove()            poll()
+- LinkedList a queue implementation; it implements the java.util.Queue interface
+
+Deques(double-ended) Queue
+A Deque is just like a Queue but has methods to specify which end of the queue to work on
+Action             throw an exception if operation fails       Return false/null if operation fails
+Add an item to the end of a queue          addFirst()           offerFirst()
+                                           addLast()            offerLast()
+Get the first item in a queue              getFirst()           peekFirst()
+                                           geLast()             peekLast()
+Remove the item at the head of a queue     removeFirst()        pollFirst()
+                                           removeLast()         pollLast()
+
+Stacks
+- A stack is a last-in, first-out ("LIFO") data structure
+- think of the plate or pez dispenser
+- you push() an element onto the stack and pop() it off the top of the stack; both are destructive methods
+- other stack methods:
+  peek(): read on the top
+  empty()
+  search()
+- Stacks are rarely implement as such, use deques(or other structures) instead
+
+
+JDBC
+Java Database Connectivity: a library that enables connecting to, reading from and writing to relational database
+Part of the base Java SDK, under the java.sql package
+provides a set of useful tools to bridge the gap between a java application and a database
+all prominent relational database (RDBMS) support a query language SQL wehich is based on ANSI standard
+ - guarantees that queries like select * from mytable will work in any RDBMS
+But database vendors are free to customize to top of ANSI SQL and define their own proprietary architecture
+
+JDBC Drivers
+- to allow java talk to database in a uniform manner, database vendor provide JDBC drivers, which are usually free
+- Drivers are compiled java code that handle all of the dirty details
+- the correct driver for the specific vendor and version must be in the Java app's classpath
+- DriverManager: A JDBC class that makes it really easy to connect
+
+String url = "jdbc:oracle:thin:@myserver.com:1521:HR";  //locator @ location
+String username = "username";
+String password = "password";
+Connection conn = DriverManager.getConnection(url, username, password);
+
+Connection
+- A java.sql.Connection instance is created when DriverManager makes a successful connection
+- the connection instance is the starting point for all JDBC commands
+- connections must always be closed when no longer needed or the program ends
+
+Statement
+- the java.sql.Statement class provides a mechanism to execute SQL statements in the database statements in the database
+- Create a Statement using Connection:
+  Statement stmt = conn.createStatement();
+- Now yo can execute any SQL statement that you would run using the database's native interface (e.g. Oracle SQL*Plus)
+- Queries that write to the database (INSERT, UDPATE, DELETE, etc) can be run with the executeUpdate() method
+
+Reading from the database
+- SELECT (read) quereis are handled differently from writes
+- Instead of executeUpdate(), using executeQuery()
+- Running the SELECT query will return a java.sql.ResultSet
+- ResultSet contains all the data retrieved by the query
+- Iterate through ResultSet using a while() loop; calling next() will advance to the next row (record) in the dataset:
+
+  ResultSet rs = stmt.executeQuert("select * from students")
+  while (rs.next()) {   //like reading from file, true or false
+    System.out.println(rs.getInt(4));   //column index, for this row, give me the column of this index, count from 1
+    System.out.println(rs.getString("NAME");  //column name, always upper case
+  }
+
+ResultSetMetaData
+- Iterating through query results in ResultSet often requires you to know a lot about the table structure or database schema
+- ResultSet has a helper called ResultSetMetaData:
+
+  ResultSet rs = stmt.executeQuery("select * from student")
+  ResultSetMetaData md = rs.getMetaData();
+  
+- ResultSetMetaData allows us to dynamically walk through the ResultSet without knowning anything about the table 
+  because it gives us info such as the column count, column names, column data types, etc:
+  
+  for (int i=1; i<= md.getColumnCount(); i++) {     //i starting from 1 not 0!!!
+     String name = md.getColumnName(i);
+     String className = md.getColumnClassName(i);
+     String type = md.getColumnTypeName(i);
+     int size = md.getColumnDisplaySize(i);
+     System.out.printf("%-6s %-10s %4\n", name, className, type, size);
+  }
+  
+PreparedStatement
+- it is not good practice to reuse Statement
+- This code works, but it is inefficient:
+  
+  String [] employees = {"Alice", "Bob", "Charlie", "Dave"};
+  Random r = new Random();
+  Statement stmt = conn.createStatement();
+  
+  for(String employee : employees) {
+    String query - "update employee set salary = salary + " + random.nextInt(10000);
+    stmt.executeUpdate(query);
+  }
+  
+- to overcome this, we can use java.util.PreparedStatement
+- PreparedStatement uses parameterized queries to provide efficient reuse:
+  
+  PreparedStatement pstmt = conn.prepareState("update employee set salary = salary + ?")    //? is a placeholder, a parameter
+                                                            //everytime I want to use this prepare statement, I will insert a value there at the ?
+  
+  for(string employee : employees) {
+    pstmt.setInt(1, random.nextInt(10000));
+    pstmt.executeUpdate();
+  }
+    
