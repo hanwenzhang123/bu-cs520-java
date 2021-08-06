@@ -18,12 +18,13 @@ public class P01_Statements {
 	public static void main(String[] args) {
 		// Define conn here so it can be seen from within finally block
 		Connection conn = null;
+		Statement stmt = null;
 
 		try {
 			// Connect to database
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			// Create s Statement
-			Statement stmt = conn.createStatement();
+			stmt = conn.createStatement();
 
 			// Create a list of students
 			Collection<Student> students = new ArrayList<Student>();
@@ -38,7 +39,8 @@ public class P01_Statements {
 				Student currentStudent = iter.next();
 
 				// Create sql DELETE query to remove any existing row
-				String writeQuery = "delete from students where user = '" + currentStudent.getName() + "'";
+				Srring writeQuery = String.format("delete from students where user = '%s'", currentStudent.getName());
+				// String writeQuery = "delete from students where user = '" + currentStudent.getName() + "'";
 				// Run the command
 				stmt.executeUpdate(writeQuery);
 
@@ -66,7 +68,6 @@ public class P01_Statements {
 
 			// Close ResultSet and Statement
 			rs.close();
-			stmt.close();
 		} catch (Exception e) {
 			// Print stack trace to console
 			e.printStackTrace();
@@ -75,6 +76,14 @@ public class P01_Statements {
 				// Close the connection if it is not null
 				if (conn != null) {
 					conn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			try {
+				// Close the statement if it is not null
+				if (stmt != null) {
+					stmt.close();
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
