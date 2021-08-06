@@ -39,7 +39,7 @@ public class P01_Statements {
 				Student currentStudent = iter.next();
 
 				// Create sql DELETE query to remove any existing row
-				Srring writeQuery = String.format("delete from students where user = '%s'", currentStudent.getName());
+				String writeQuery = String.format("delete from students where user = '%s'", currentStudent.getName());
 				// String writeQuery = "delete from students where user = '" + currentStudent.getName() + "'";
 				// Run the command
 				stmt.executeUpdate(writeQuery);
