@@ -1,0 +1,50 @@
+01
+Alan Alex
+Goalkeeper
+Senior
+-----
+02
+Bryan Bob
+Right Fullback
+Junior
+-----
+03
+Charles Clark
+Left Fullback
+Senior
+-----
+04
+David Davis
+Center Back
+Sophomore
+-----
+05
+Edison Elvis
+Defending
+Freshman
+-----
+06
+Frank Faith
+Right Midfielder
+Junior
+-----
+07
+George Gerald
+Central
+Freshman
+-----
+08
+Henry Harry
+Striker
+Junior
+-----
+09
+Jason John
+Attacking Midfielder
+Senior
+-----
+10
+Kevin Kyle
+Left Midfielder
+Senior
+-----
