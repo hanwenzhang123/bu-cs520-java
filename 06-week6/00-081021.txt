@@ -1,0 +1,37 @@
+Threading
+- A process is a program (or part of a program) running in its own memory space - the JVM is an example
+- A thread is a single, lightweight process running within a process
+- multiple threads share memory space allocated to the process (ie Heap)
+- even thread gets its own stack memory for its call tree and locally scoped variables
+- the OS scheduler is responsible for allocating cycles / time-slices to threads for execution
+- computers can run just one thread per CPU at a time
+  socket - what the CPU chip connects into
+  core - a full blown CPU on a chip, usually, we have multiple cores on a single chip
+- with multiple CPUs we can achieve true multithreading/parallelism
+- with a single CPU we can still run multiple threads, however, the scheduler divides the CPU time into multiple slots and will switch allocation between threads
+
+Use case for multithreading
+- threading is tool, no different than the data structures we just learned about, 
+  and like those different collections you must know when it is appropriate to use one versus another
+- threads can lock other threads from running
+- if you do not handle the concurrency properly, you could have "data corruption" and other unplanned consequences
+- in general, the problem you are trying to solve dictates whether you can benefit from implementing threading. 
+  you want to consider the pros and cons carefully and validate your implementation via testing
+    - use threading when
+      - you can easily isolate and divide up the work (assignment 6 as it is currently specified is not a good candidate for threading)
+      - lots of calculations
+      - very little shared data between threads
+      - you have enough system capacity to handle it
+    - do not use threading when the above is not true
+- you do not determine threading but the scheduler in your system, sheduler call the run method, you never call it yourself
+
+Threading in Java
+- java has native support for thread concurrency as a fundamental concept
+  - java.lang.Object provides methods that facilitate multithreading for all classes to use 
+- there is always at least one thread running when you execute a program, regardless of whether yo usee it or interact with it
+- to create threaded progr
+
+subclass
+
+
+ 
