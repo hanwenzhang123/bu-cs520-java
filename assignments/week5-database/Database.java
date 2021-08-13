@@ -175,40 +175,40 @@ public class Database {
     }
  */
 
-/*
-public class Playpen {
 
-	public static void doSomething() throws DatabaseException {
-		try {
-			throw new Exception( "Something terrible happened..." );
-		}
-		catch( Exception e )
-		{
-			/*
-			 * This is an example of eating/hiding the orginal exception.
-			 * Uncomment the throw statement below
-			 */
-			//throw new DatabaseException();
+// public class Playpen {
+
+// 	public static void doSomething() throws DatabaseException {
+// 		try {
+// 			throw new Exception( "Something terrible happened..." );
+// 		}
+// 		catch( Exception e )
+// 		{
+// 			/*
+// 			 * This is an example of eating/hiding the orginal exception.
+// 			 * Uncomment the throw statement below
+// 			 */
+// 			//throw new DatabaseException();
 			
-			/*
-			 * This is an example of where we are not hiding the orginal exception.
-			 * Comment the throw statement from above and uncomment the one below.
-			 */
-			//throw new DatabaseException(e);
-		}
-	}
+// 			/*
+// 			 * This is an example of where we are not hiding the orginal exception.
+// 			 * Comment the throw statement from above and uncomment the one below.
+// 			 */
+// 			//throw new DatabaseException(e);
+// 		}
+// 	}
 
-	public static void main(String[] args) {
-		try
-		{
-			Playpen.doSomething();
-		}
-		catch( Exception e )
-		{
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
+// 	public static void main(String[] args) {
+// 		try
+// 		{
+// 			Playpen.doSomething();
+// 		}
+// 		catch( Exception e )
+// 		{
+// 			System.out.println(e.getMessage());
+// 			e.printStackTrace();
+// 		}
 
-	}
-}
-*/
+// 	}
+// }
+
