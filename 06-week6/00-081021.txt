@@ -27,11 +27,44 @@ Use case for multithreading
 
 Threading in Java
 - java has native support for thread concurrency as a fundamental concept
-  - java.lang.Object provides methods that facilitate multithreading for all classes to use 
+  - java.lang.Object provides methods that facilitate multithreading for all classes to use (i.e. notify, notifyAll, wait, ...)
 - there is always at least one thread running when you execute a program, regardless of whether yo usee it or interact with it
-- to create threaded progr
+- to create threaded processes, there are two approaches in Java:
+  - subclass java.lang.Thread
+  - Implement the java.lang.Runnable interface
+- these are computationally equal
 
-subclass
+subclassing java lang.Thread
+- to use this approach, your class will extend Thread
+- a new thread is created when the class is instantiated
+- the class must have a method called public void run()
+  - the method signature must match exactly
+  - the metho can optionally contain code that executes when the thread starts
+- classes that instantiate the thread class can start the thread by invoking the start() method
+- start() triggers run()
 
+implementing java.lang.Runnable
+- to use this approach, your class will implement the Runnabl interface
+- otherwise, works just like the Thread subclass approach with run() and the start() methods
 
- 
+Thread synchronization
+- when using threads, you much always be aware of what all the threads could be doing
+- multiple threads working on the same data cause data inconsistency
+- the synchronized keyword can prevent this problem by temporarily locking the method/block, and not allowing other threads access
+
+Thread synchronization: notify() and wait()
+- using wait(), code within a synchronized block can release its hold on the thread to wait for another thread to complete its work
+- the thread to be waited on must call notify() or notifyAll() to alert other threads that its work is complete
+- threads can sleep() for a period of time, yield() control the other threads and join() other threads
+- improper synchronization of threads can lead to deadlock
+
+Networking in Java: Working with URLs
+- java has support for networking built in under java.net package
+- for enterprise web support, Java has another editor called Java EE (enterprised edition) which is beyond the scope of this course
+- URL = uniformed resource locator
+- java.net.URL is a simple class that can store and retrieve components within a URL
+
+Connecting to a networked resource
+- java.net.URLConnection can take a URL object instance and create a connection using its openConnection() method
+- with a connection open, java can be read from it using streams and readers from java.io
+  
