@@ -96,7 +96,7 @@ public class Database {
             return players;
 
         } catch (Exception e) {
-            throw new DatabaseException();
+            throw new DatabaseException(e);
         } finally {
             try {
                 // Close the statement if it is not null
