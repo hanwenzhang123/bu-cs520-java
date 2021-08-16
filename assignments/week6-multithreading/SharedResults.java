@@ -1,9 +1,10 @@
 package cs520.hw6;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class SharedResults {
-    private ArrayList<ResultsEntry> results;
+    private Collection<ResultsEntry> results = null;
 
     public SharedResults() {
         this.results = new ArrayList<ResultsEntry>();
