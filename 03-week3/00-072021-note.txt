@@ -34,7 +34,7 @@ Parsing strings
 - parsing is a way of reading and interpreting values
 - the classes behind all primitive types hav e static parsing method
   Integer.parseInt("34"); //34
-  Double.parseInt("34.5"); //34.5
+  Double.parseDouble("34.5"); //34.5
 - these parsers will fail if the strings are not convertible
   
 Creating strings
